@@ -39,7 +39,7 @@ module.exports = {
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        hot: false
+        historyApiFallback: true
     }
     ,
     plugins: [
