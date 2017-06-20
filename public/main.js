@@ -7,7 +7,8 @@ import Landing from './components/landing';
 import Tabata from './components/tabata';
 import {
     BrowserRouter as Router,
-    Route
+    Route,
+    Switch
 } from 'react-router-dom'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -18,8 +19,13 @@ const App = () => (
         <div>
             <Menu />
             <Header />
-            <Route exact path="/" component={Landing} />
-            <Route path="/tabata" component={Tabata} />
+            <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route path="/tabata" component={Tabata} />
+                <Route render={() => {
+                    return (<div>Not Found</div>);
+                }} />
+            </Switch>
         </div>
     </Router>
 );
