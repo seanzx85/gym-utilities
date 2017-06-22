@@ -24,6 +24,7 @@ export default class Menu extends React.Component {
         </div>
         <NavLink to='/tabata'><MenuItem onTouchTap={this.props.toggleSideMenu} primaryText='Tabata Timer'/></NavLink>
         <NavLink to='/weights'><MenuItem onTouchTap={this.props.toggleSideMenu} primaryText='Weight Tables'/></NavLink>
+        <NavLink to='/convert'><MenuItem onTouchTap={this.props.toggleSideMenu} primaryText='Weight Conversion'/></NavLink>
 
       </Drawer>
     );

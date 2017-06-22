@@ -6,6 +6,7 @@ import Header from './components/header';
 import Landing from './components/landing';
 import Tabata from './components/tabata';
 import Weights from './components/weights';
+import WeightConversion from './components/weight-conversion';
 import {
     BrowserRouter as Router,
     Route,
@@ -44,6 +45,7 @@ class App extends React.Component {
                         <Route exact path="/" component={Landing} />
                         <Route path="/tabata" component={Tabata} />
                         <Route path='/weights' component={Weights}/>
+                        <Route path='/convert' component={WeightConversion}/>
                         <Route render={() => {
                             return (<div>Not Found</div>);
                         }} />

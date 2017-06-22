@@ -1,19 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import TextField from 'material-ui/TextField';
+
 
 
 class WeightTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { calcWeights: this.updateTableWeight(props.weight) };
+        this.state = {
+            startOffset: 4
+        };
+        this.state.calcWeights = this.updateTableWeight(props.weight);
+
     }
 
     updateTableWeight = (weight) => {
         console.log('Update Table Weight', weight)
-
-        let arr = Array(20);
+        //Start at 5 in to 20 (25% to 95%)
+        let arr = Array(20 - this.state.startOffset - 1);
         for (let i = 0; i < arr.length; i += 1) {
-            arr[i] = Math.round(((i + 1) / 20) * weight * 100) / 100;
+            arr[i] = Math.round(((i + 1 + this.state.startOffset) / 20) * weight * 100) / 100;
         }
         console.log(arr)
         return arr;
@@ -38,16 +45,16 @@ class WeightTable extends React.Component {
     render() {
         return (
             <div className='weight-table'>
-                <div className='row'>
-                    <span className='cell'>Percent</span>
-                    <span className='cell'>Weight</span>
-                    <span className='cell'>Nearest 5lbs</span>
+                <div className='row col3 header'>
+                    <div className='cell'>Percent</div>
+                    <div className='cell'>Weight</div>
+                    <div className='cell'>Nearest 5lbs</div>
                 </div>
                 {this.state.calcWeights.map((weight, index) => {
-                    return (<div className='row' key={index}>
-                        <span className='cell'>{index}</span>
-                        <span className='cell'>{weight}</span>
-                        <span className='cell'>{this.nearestFive(weight)}</span>
+                    return (<div className='row col3' key={index}>
+                        <div className='cell'>{(index + 1 + this.state.startOffset) * 5}%</div>
+                        <div className='cell'>{weight}</div>
+                        <div className='cell'>{this.nearestFive(weight)}</div>
                     </div>);
                 })
                 }
@@ -55,6 +62,9 @@ class WeightTable extends React.Component {
 
         );
     }
+}
+WeightTable.propTypes = {
+    weight: PropTypes.number.isRequired
 }
 
 
@@ -78,15 +88,16 @@ export default class Weights extends React.Component {
     render() {
         return (
             <div>
-                <h1>Weights</h1>
+                <p>Weights percentage table</p>
                 <div>
-                    Input Weight <TextField
+                    <TextField
                         id='weight-input'
+                        type='number'
                         value={this.state.weight}
                         onChange={this.updateWeight}
+                        floatingLabelText='Input Weight'
                     />
                 </div>
-                <div>{this.state.weight}</div>
                 <WeightTable weight={this.state.weight} />
             </div>
         );

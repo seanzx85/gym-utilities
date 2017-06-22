@@ -18,9 +18,22 @@ body{
 }
 
 .row{
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
-    .cell{
-        margin: 1em;
+    flex-direction: row;
+    text-align:center;
+    >.cell{
+        margin: .5em;
     }
+    &.header{
+        font-weight: bold;
+    }
+    &:nth-child(even){
+        background-color: #CCC;
+    }
+
+}   
+
+.row.col3 > .cell{
+width:33.3%;
 }
