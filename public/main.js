@@ -27,6 +27,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = { openSideMenu: false };
+        this.toggleSideMenu = this.toggleSideMenu.bind(this)
     }
 
   toggleSideMenu = () =>{
@@ -37,8 +38,8 @@ class App extends React.Component {
         return (<MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <Router>
                 <div>
-                    <Header toggleSideMenu={this.toggleSideMenu.bind(this)}/>
-                    <Menu openSideMenu={this.state.openSideMenu} toggleSideMenu={this.toggleSideMenu.bind(this)}/>
+                    <Header toggleSideMenu={this.toggleSideMenu}/>
+                    <Menu openSideMenu={this.state.openSideMenu} toggleSideMenu={this.toggleSideMenu}/>
                     <Switch>
                         <Route exact path="/" component={Landing} />
                         <Route path="/tabata" component={Tabata} />
