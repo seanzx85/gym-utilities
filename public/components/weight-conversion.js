@@ -2,11 +2,10 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-export class WeightConversion extends React.Component {
+export default class WeightConversion extends React.Component {
     constructor(props) {
         super(props);
         this.weightKG = 100;
-        console.log('Constructor');
     }
 
     render() {

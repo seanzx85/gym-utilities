@@ -1,5 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import ContentClear from 'material-ui/svg-icons/content/clear';
+
 
 export default class Menu extends React.Component {
 
@@ -9,17 +16,24 @@ export default class Menu extends React.Component {
 
   render() {
     return (
-      <div>
-        Menu:
-        <ul>
-          <li><NavLink to='/tabata'>Tabata Timer</NavLink></li>
-        </ul>
-      </div>
+      <Drawer docked={true} open={this.props.openSideMenu} className='side-menu'>
+        <div className='close-container'>
+          <IconButton touch={true} onTouchTap={this.props.toggleSideMenu}>
+            <ContentClear />
+          </IconButton>
+        </div>
+        <NavLink to='/tabata'><MenuItem onTouchTap={this.props.toggleSideMenu} primaryText='Tabata Timer'/></NavLink>
+        <NavLink to='/weights'><MenuItem onTouchTap={this.props.toggleSideMenu} primaryText='Weight Tables'/></NavLink>
+
+      </Drawer>
     );
   }
 }
 
-
+Menu.propTypes = {
+  openSideMenu: PropTypes.bool.isRequired,
+  toggleSideMenu: PropTypes.func.isRequired
+}
 
 
 //Tabata Timer

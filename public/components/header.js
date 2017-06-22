@@ -1,4 +1,6 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
 
 export default class Header extends React.Component {
 
@@ -6,16 +8,13 @@ export default class Header extends React.Component {
     super(props);
   }
 
-  handleToggle = () =>{
-    console.log('Toggle Open');
-  }
-
-
   render() {
     return (
-       <div className='header'>
-         Gym Utilities
-         </div>
+       <AppBar title='Gym Utilities' onLeftIconButtonTouchTap={this.props.toggleSideMenu}/>         
     );
   }
+}
+
+ Header.propTypes = {
+  toggleSideMenu: PropTypes.func.isRequired
 }
