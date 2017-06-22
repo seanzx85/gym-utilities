@@ -16,13 +16,11 @@ class WeightTable extends React.Component {
     }
 
     updateTableWeight = (weight) => {
-        console.log('Update Table Weight', weight)
         //Start at 5 in to 20 (25% to 95%)
         let arr = Array(20 - this.state.startOffset - 1);
         for (let i = 0; i < arr.length; i += 1) {
             arr[i] = Math.round(((i + 1 + this.state.startOffset) / 20) * weight * 100) / 100;
         }
-        console.log(arr)
         return arr;
     }
 
