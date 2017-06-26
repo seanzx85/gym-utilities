@@ -1,39 +1,61 @@
 //@import '../node_modules/bootstrap/scss/bootstrap-grid';
 //@import '../node_modules/bootstrap/scss/bootstrap-reboot';
 //@import '../node_modules/bootstrap/scss/_utilities';
-
-.close-container{
+.close-container {
     display: flex;
     flex-direction: row-reverse;
 }
 
-.side-menu{
-    a{
+.side-menu {
+    a {
         text-decoration: none;
     }
 }
 
-body{
+body {
     font-family: Roboto, sans-serif
 }
 
-.row{
+.row {
     width: 100%;
     display: flex;
     flex-direction: row;
-    text-align:center;
-    >.cell{
+    text-align: center;
+    >.cell {
         margin: .5em;
     }
-    &.header{
+    &.header {
         font-weight: bold;
     }
-    &:nth-child(even){
+    &:nth-child(even) {
         background-color: #CCC;
     }
+}
 
-}   
+.max-width-mobile {
+    max-width: 400px;
+}
 
-.row.col3 > .cell{
-width:33.3%;
+.row.col3>.cell {
+    width: 33.3%;
+}
+
+.tabata-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.tabata-timer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.tabata-counter, .tabata-round{
+    font-size: 150px;
+    &.work{
+        color: #0F0;
+    }
+    &.rest{
+        color: #BBB;
+    }
 }

@@ -5,7 +5,7 @@ import Menu from './components/menu';
 import Header from './components/header';
 import Landing from './components/landing';
 import Tabata from './components/tabata';
-import Weights from './components/weights';
+import Weights from './components/weight-table';
 import WeightConversion from './components/weight-conversion';
 import {
     BrowserRouter as Router,
