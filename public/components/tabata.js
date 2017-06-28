@@ -18,15 +18,18 @@ class Round extends React.Component {
 class Counter extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: 1 };
+    this.state = { seconds: 0, mode: "rest" };
   }
 
   componentWillReceiveProps(nextProps) {
-    let calcSeconds = (1 + nextProps.clock) % 30,
-      mode = 'work';
-    if (calcSeconds > 20) {
+    let calcSeconds = nextProps.clock % 30,
+      mode = "work";
+    if (nextProps.clock === 0) {
+      mode = "rest";
+    }
+    if (calcSeconds >= 20) {
       calcSeconds = calcSeconds - 20;
-      mode = 'rest';
+      mode = "rest";
     }
     this.setState({ seconds: calcSeconds, mode: mode });
   }
@@ -51,7 +54,7 @@ export default class Tabata extends React.Component {
     this.clock = setInterval(
       function() {
         let count = Math.round((Date.now() - this.state.clockStart) / 1000);
-        if (count > 30 * 7 + 20) {
+        if (count > 30 * 7 + 20 - 1) {
           clearInterval(this.clock);
           this.setState({
             active: false
